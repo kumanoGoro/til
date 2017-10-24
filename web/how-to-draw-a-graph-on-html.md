@@ -30,6 +30,10 @@ Google Trends では人気は以下の順
 1. jqplot
 
 Google Charts はソースをダウンロードして使うことはできず、必ず Google にアクセスしないといけない。
+https://developers.google.com/chart/interactive/faq#offline
+> Can I use charts offline?
+Your users' computers must have access to https://www.gstatic.com/charts/loader.js in order to use the interactive features of Google Charts. This is because the visualization libraries that your page requires are loaded dynamically before you use them. The code for loading the appropriate library is part of the included script, and is called when you invoke the google.charts.load() method. Our terms of service do not allow you to download the google.charts.load or google.visualization code to use offline.
+
 →Chart.js が人気、使いやすさ、値段すべて兼ね備えている。
 
 ### 参考
