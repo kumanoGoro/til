@@ -1,5 +1,6 @@
 # Docker に Jenkins をのせる
 参考：https://dev.classmethod.jp/tool/jenkins/jenkins-on-docker/
+https://techblog.yahoo.co.jp/event/jenkins-with-docker/
 
 参考サイトに記載の通りに手順を踏んでいくとビルドで詰まった。
 
@@ -99,5 +100,31 @@ The command '/bin/sh -c /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
 ```
 
 違うホストの名前解決に失敗。
+一旦プラグイン導入なしでやってみる。
 
+```
+λ docker build -t jenkins-master .
+Sending build context to Docker daemon  3.072kB
+Step 1/6 : FROM jenkinsci/jenkins:2.11
+ ---> fb476c24b4d7
+Step 2/6 : ENV HTTP_PROXY http://oskproxy.intra.tis.co.jp:8080
+ ---> Using cache
+ ---> 35cece25ee44
+Step 3/6 : ENV HTTPS_PROXY http://oskproxy.intra.tis.co.jp:8080
+ ---> Using cache
+ ---> cfc38f8ab914
+Step 4/6 : ENV NO_PROXY localhost,127.0.0.1,192.168.99.100,192.168.99.101
+ ---> Using cache
+ ---> 72ee2f63c43a
+Step 5/6 : USER root
+ ---> Using cache
+ ---> 21fd4273777f
+Step 6/6 : USER jenkins
+ ---> Running in 95c38ba46ef9
+ ---> cd098cebb5af
+Removing intermediate container 95c38ba46ef9
+Successfully built cd098cebb5af
+Successfully tagged jenkins-master:latest
+SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.
+```
 
